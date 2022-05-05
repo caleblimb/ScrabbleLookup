@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
         val lookupResultMessage = findViewById<TextView>(R.id.textViewResult)
 
-        val dictionary = Dictionary()
+        val dictionary = Dictionary(this)
 
         userInput.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
