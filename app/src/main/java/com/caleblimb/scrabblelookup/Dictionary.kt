@@ -6,12 +6,12 @@ import java.io.IOException
 import java.io.InputStream
 
 class Dictionary(context: Context) {
-    val words: List<String>
     val fileName: String = "words.txt"
+    val words: Set<String>
 
     init {
         var string: String = ""
-        val delimiter = "\n"
+        val delimiter = "\r\n"
         try {
             val inputStream: InputStream = context.assets.open(fileName)
             val size: Int = inputStream.available()
@@ -21,25 +21,15 @@ class Dictionary(context: Context) {
         } catch (e: IOException) {
             e.printStackTrace()
         }
-        words = string.split(delimiter)
+        words = string.split(delimiter).toSet()
 
     }
 
     fun isWord(word: String): Boolean {
-        val index = words.binarySearch(word, CompareWords, 0, words.size)
-        print(index)
-        return index >= 0
+        return (word in words)
+
     }
 
-    fun indexOf(word: String): Int {
-        return words.binarySearch(word, CompareWords, 0, words.size)
-    }
+
 }
 
-class CompareWords {
-    companion object : Comparator<String> {
-        override fun compare(o1: String, o2: String): Int {
-            return o1.compareTo(o2)
-        }
-    }
-}

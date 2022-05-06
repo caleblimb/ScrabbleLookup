@@ -26,11 +26,12 @@ class MainActivity : AppCompatActivity() {
             }
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 var word = userInput.text.toString()
+
                 if (dictionary.isWord(word)) {
-                    lookupResultMessage.text = word.plus(" is an A word :)")
+                    lookupResultMessage.text = word.plus(" is a word :)")
                 }
                 else {
-                    lookupResultMessage.text = userInput.text.toString().plus(" is not an A word :(")
+                    lookupResultMessage.text = userInput.text.toString().plus(" is not a word :(")
                 }
             }
         })
