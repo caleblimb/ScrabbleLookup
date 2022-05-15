@@ -1,12 +1,11 @@
 package com.caleblimb.scrabblelookup
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
 import android.widget.TextView
-import com.caleblimb.scrabblelookup.Dictionary
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +24,7 @@ class MainActivity : AppCompatActivity() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                var word = userInput.text.toString()
+                val word = userInput.text.toString()
 
                 if (dictionary.isWord(word)) {
                     lookupResultMessage.text = word.plus(" is a word :)")

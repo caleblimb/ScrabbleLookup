@@ -1,7 +1,6 @@
 package com.caleblimb.scrabblelookup
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import java.io.IOException
 import java.io.InputStream
 
@@ -21,15 +20,10 @@ class Dictionary(context: Context) {
         } catch (e: IOException) {
             e.printStackTrace()
         }
-        words = string.split(delimiter).toSet()
-
+        words = string.lowercase().split(delimiter).toSet()
     }
 
     fun isWord(word: String): Boolean {
-        return (word in words)
-
+        return (word.lowercase().filter{!it.isWhitespace()} in words)
     }
-
-
 }
-
